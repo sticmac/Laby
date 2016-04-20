@@ -2,8 +2,9 @@
 <html lang="fr">
 <head>
 	<title>Laby</title>
+	<script src="js/map.js"></script>
 </head>
-<body>
-	<h1>Bonjoooooour :3</h1>
+<body onload="go()">
+	<div id="laby"/>
 </body>
 </html>
