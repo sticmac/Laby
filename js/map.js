@@ -2,7 +2,8 @@
 
 //Variables globales
 var lines = 10;
-var colonnes = 15;
+var columns = 15;
+var lenCase = 0;
 
 
 function createGrid() {
@@ -10,8 +11,8 @@ function createGrid() {
 	var table = "<table>\n";
 	for (var x = 0 ; x < lines ; x++) {
 		table += "<tr>\n";
-		for (var y = 0 ; y < colonnes ; y++) {
-			table += "<td style='padding: 10px; background-color: green;' id='"+x+","+y+"'></td>";
+		for (var y = 0 ; y < columns ; y++) {
+			table += "<td style='padding: "+lenCase+"px; background-color: green;' id='"+x+","+y+"'></td>";
 		}
 		table += "</tr>\n";
 	}
@@ -19,6 +20,21 @@ function createGrid() {
 	document.getElementById("laby").innerHTML = table;
 }
 
+function changeSizes() {                                                                              
+	var height = window.innerHeight                                                               
+	  || document.documentElement.clientHeight                                                    
+    	  || document.body.clientHeight;                                                              
+	var width = window.innerWidth                                                                 
+	  || document.documentElement.clientWidth                                                     
+	  || document.body.clientWidth;                                                               
+														      
+	var heightCases = height/(2*lines)-2;                                                      
+	var widthCases = width/(2*columns)-2;
+
+	lenCase = Math.min(heightCases, widthCases);	
+}    
+
 function go() {
+	changeSizes();
 	createGrid();
 }
