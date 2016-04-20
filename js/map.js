@@ -12,7 +12,12 @@ function createGrid() {
 	for (var x = 0 ; x < lines ; x++) {
 		table += "<tr>\n";
 		for (var y = 0 ; y < columns ; y++) {
-			table += "<td style='padding: "+lenCase+"px; background-color: green;' id='"+x+","+y+"'></td>";
+			if (x == 0) {
+				table += "<td style='padding: "+lenCase+"px; background-color: "+getBackgroundFromElement("wall")+";' class='wall' id='"+x+","+y+"'></td>";
+			}
+			else {
+				table += "<td style='padding: "+lenCase+"px; background-color: "+getBackgroundFromElement()+";' id='"+x+","+y+"'></td>";
+			}
 		}
 		table += "</tr>\n";
 	}
@@ -33,6 +38,17 @@ function changeSizes() {
 
 	lenCase = Math.min(heightCases, widthCases);	
 }    
+
+function getBackgroundFromElement(classname) {
+	switch (classname) {
+		case "wall":
+			return "black";
+			break;
+		default:
+			return "green";
+			break;
+	}
+}
 
 function go() {
 	changeSizes();
