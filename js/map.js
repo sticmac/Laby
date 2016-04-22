@@ -15,24 +15,23 @@ function getMapPHP() {
 		if (xhr.readyState == 4) { //lorsque la requête est prête
 			if (xhr.status == 200) {
 				json = JSON.parse(xhr.responseText);
+				createGrid(json);
 			}
 			else { console.log("Erreur "+xhr.status); }
 		}
 	}
 
 	xhr.send();
-
-	return json;
 }				
 
-function createGrid() {
+function createGrid(map) {
 	//Création de la table contenant toutes les cases de la grille
-	var json = getMapPHP();
 	var table = "<table>\n";
-	for (var x = 0 ; x < lines ; x++) {
+	for (var y = 0 ; y < lines ; y++) {
 		table += "<tr>\n";
-		for (var y = 0 ; y < columns ; y++) {
-			table += "<td style='padding: "+lenCase+"px; background-color: "+getBackgroundFromElement()+";' id='"+x+","+y+"'></td>";
+		for (var x = 0 ; x < columns ; x++) {
+			var classname = map[0].cases[y][x].nature;
+			table += "<td class='"+classname+"' style='padding: "+lenCase+"px; background-color: "+getBackgroundFromElement(classname)+";' id='"+x+","+y+"'></td>";
 		}
 		table += "</tr>\n";
 	}
@@ -67,5 +66,5 @@ function getBackgroundFromElement(classname) {
 
 function go() {
 	changeSizes();
-	createGrid();
+	getMapPHP();
 }
