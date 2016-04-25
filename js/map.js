@@ -4,6 +4,16 @@
 var lines = 10;
 var columns = 15;
 var lenCase = 0;
+var character = new Character(0,0,5,7);
+//var character = [0, 0, 5, 7];
+
+//Objet Character
+//Paramêtres : xS, yS : coordonnées de la salle de départ
+//		xC, yC : coordonnées de la case de départ
+function Character(xS, yS, xC, yC) {
+	this.room = [xS, yS];
+	this.roomCase = [xC, yC];
+}
 
 
 function getMapPHP() {

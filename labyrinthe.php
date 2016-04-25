@@ -6,5 +6,7 @@
 </head>
 <body onload="go()">
 	<div id="laby"/>
+
+	<script language="javascript">document.onkeydown = changePos;</script>
 </body>
 </html>
