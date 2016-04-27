@@ -16,7 +16,7 @@
 	</table>
 	<table>
 		<tr id="boutons">
-			<td> <input type="button" value="0,0" onclick="changeMap();" /> </td>
+			<td> <input type="button" value="0,0" onclick="changeMap(\"0,0\");" /> </td>
 		</tr>
 	</table>
 	<table id="b_creator">
