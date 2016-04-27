@@ -36,13 +36,13 @@ function getMapPHP() {
 	xhr.send();
 }				
 
-function createGrid(x, y) { //crée la grille correspondant à la salle de coordonnées x,y
+function createGrid(xRoom, yRoom) { //crée la grille correspondant à la salle de coordonnées x,y
 	//Création de la table contenant toutes les cases de la grille
 	var table = "<table>\n";
 	for (var y = 0 ; y < lines ; y++) {
 		table += "<tr>\n";
 		for (var x = 0 ; x < columns ; x++) {
-			var classname = map[0].cases[x][y].nature;
+			var classname = map[xRoom][yRoom].cases[x][y].nature;
 			table += "<td class='"+classname+"' style='padding: "+lenCase+"px; background-color: "+getBackgroundFromElement(classname)+";' id='"+x+","+y+"'></td>";
 		}
 		table += "</tr>\n";
@@ -61,14 +61,8 @@ function update() {
 	}
 }
 
-function changeSizes() {                                                                              
-	var height = window.innerHeight                                                               
-	  || document.documentElement.clientHeight                                                    
-    	  || document.body.clientHeight;                                                              
-	var width = window.innerWidth                                                                 
-	  || document.documentElement.clientWidth                                                     
-	  || document.body.clientWidth;                                                               
-														      
+function changeSizes() { 
+	var height = 
 	var heightCases = height/(2*lines)-2;                                                      
 	var widthCases = width/(2*columns)-2;
 
