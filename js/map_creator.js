@@ -70,8 +70,10 @@ function sendMap() {
 	
 }
 
-function createMap() {
-	
+function addMap() {
+	x = document.getElementsByName("coorX")[0].value;
+	y = document.getElementsByName("coorY")[0].value;
+	document.getElementById("boutons").innerHTML += "<td> <input type=\"button\" value=\""+x+","+y+"\" onclick=\"changeMap();\" /> </td>";
 }
 
 function changeMap() {
