@@ -23,17 +23,8 @@ function createGrid() {
 }
 
 function changeSizes() {                                                                              
-	var height = window.innerHeight                                                               
-	  || document.documentElement.clientHeight                                                    
-     || document.body.clientHeight;                                                              
-	var width = window.innerWidth                                                                 
-	  || document.documentElement.clientWidth                                                     
-	  || document.body.clientWidth;                                                               
-														      
-	var heightCases = height/(2*lines)-2;                                                      
-	var widthCases = width/(2*columns)-2;
-
-	lenCase = Math.min(heightCases, widthCases);	
+	var size = document.getElementById("laby").clientWidth;
+	lenCase = size/(2*columns)-2;
 }    
 
 function getBackgroundFromElement(classname) {

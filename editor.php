@@ -3,6 +3,7 @@
 <head>
 	<title>Editeur de carte</title>
 	<script src="js/map_creator.js"></script>
+        <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css" />
 </head>
 <body onload="go()">
 	<nav class ="navbar navbar-default">
@@ -18,7 +19,7 @@
                 </div>
 	</nav>
 
-	<div id="laby"></div>
+	<div id="laby" class="col-md-8"></div>
 	<table>
 		<tr><td> <input type="button" value="Sol" onclick="changeClass();" /> </td></tr>
 		<tr><td> <input type="button" value="Mur" onclick="changeClass('wall');" /> </td></tr>
