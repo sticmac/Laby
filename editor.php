@@ -4,6 +4,7 @@
 	<title>Editeur de carte</title>
 	<script src="js/map_creator.js"></script>
         <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="./css/laby.css" />
 </head>
 <body onload="go()">
 	<nav class ="navbar navbar-default">
