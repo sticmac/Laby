@@ -14,13 +14,17 @@
                 <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
                                 <li><a href="./labyrinthe.php">Labyrinthe</a></li>
-                                <li><a href="./editor.php">Editeur</a></li>
+				<li><a href="./editor.php">Editeur</a></li>
                         </ul>
+			<ul class="nav navbar-nav navbar-right">
+              			<li><a href='login.php'>Log in</a></li>
+			</ul>
                 </div>
         </nav>
 
 	<div id="laby" class="col-md-8"/>
 
 	<script language="javascript">document.onkeydown = changePos;</script>
+
 </body>
 </html>
