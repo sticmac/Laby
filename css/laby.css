@@ -2,3 +2,11 @@ td {
 	background-position: center;
 	background-size: 100%;
 }
+
+#refused {
+	visibility: hidden;
+}
+
+#refused:target {
+	visibility: visible;
+}

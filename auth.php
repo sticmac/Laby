@@ -11,5 +11,5 @@ if (isRegistered($xml, $username, md5($password))) {
 	$_SESSION['user'] = $username;
 	header("Location: index.php");
 }
-else header("Location: login.php?failed");
+else header("Location: login.php#refused");
 ?>

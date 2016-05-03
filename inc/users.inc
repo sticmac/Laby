@@ -1,5 +1,5 @@
 <?php
-function isRegistered($xml, $login, $pass) {
+function login($xml, $login, $pass) {
 	$ret = $xml->xpath("login[@login='$login' and @password='$pass'");
 	return (count($ret) == 1);
 }
