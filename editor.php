@@ -1,3 +1,5 @@
+<?php require_once('inc/nav.inc'); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
