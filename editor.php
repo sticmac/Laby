@@ -1,11 +1,28 @@
+<?php require_once('inc/nav.inc'); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<title>Editeur de carte</title>
 	<script src="js/map_creator.js"></script>
+        <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="./css/laby.css" />
 </head>
 <body onload="go()">
-	<div id="laby"></div>
+	<nav class ="navbar navbar-default">
+                <div class="container-fluid">
+                        <div class="navbar-header">
+                        <a class="navbar-brand" href="./index.php">Laby</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                                <li><a href="./labyrinthe.php">Labyrinthe</a></li>
+                                <li><a href="./editor.php">Editeur</a></li>
+                        </ul>
+                </div>
+	</nav>
+
+	<div id="laby" class="col-md-8"></div>
 	<table>
 		<tr><td> <input type="button" value="Sol" onclick="changeClass();" /> </td></tr>
 		<tr><td> <input type="button" value="Mur" onclick="changeClass('wall');" /> </td></tr>

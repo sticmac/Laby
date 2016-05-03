@@ -24,26 +24,23 @@ function createGrid(mapX, mapY) {
 }
 
 function changeSizes() {                                                                              
-	var height = window.innerHeight                                                               
-	  || document.documentElement.clientHeight                                                    
-     || document.body.clientHeight;                                                              
-	var width = window.innerWidth                                                                 
-	  || document.documentElement.clientWidth                                                     
-	  || document.body.clientWidth;                                                               
-														      
-	var heightCases = height/(2*lines)-2;                                                      
-	var widthCases = width/(2*columns)-2;
-
-	lenCase = Math.min(heightCases, widthCases);	
+	var size = document.getElementById("laby").clientWidth;
+	lenCase = size/(2*columns)-2;
 }    
 
 function getBackgroundFromElement(classname) {
 	switch (classname) {
 		case "wall":
-			return "black";
+			return "img/wall.png";
+			break;
+		case "char":
+			return "img/character.png";
+			break;
+		case "door":
+			return "img/door.png";
 			break;
 		default:
-			return "green";
+			return "img/grass.png";
 			break;
 	}
 }
@@ -62,7 +59,12 @@ function update() {
 	for (var i = 0 ; i < columns ; i++) {
 		for (var j = 0 ; j < lines ; j++) {
 			var elt = document.getElementById(i+","+j);
-			elt.style["background-color"] = getBackgroundFromElement(elt.classList[0]);
+			var style = "";
+			for (var k = elt.classList.length-1 ; k >= 0 ; k--) {
+				style += "url("+getBackgroundFromElement(elt.classList[k])+")";
+				if (k != 0) style += ", ";
+			}
+			elt.style["background-image"] = style;
 		}
 	}
 }
