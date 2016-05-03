@@ -1,7 +1,7 @@
 <?php
 function login($user, $pass) {
 	$xml = simplexml_load_file("./xml/users.xml");
-	$ret = $xml->xpath("user[@login='".$user."' and password='".$pass."']");
+	$ret = $xml->xpath("user[@login='".$user."' and @password='".$pass."']");
 	if (count($ret) == 0) { //L'authentification a écoutée
 		return false;
 	}
