@@ -6,7 +6,7 @@ $password = $_POST['password'];
 
 $xml = simplexml_load_file("xml/users.xml");
 
-if (isRegistered($xml, $username, md5($password))) {
+if (login($username, md5($password))) {
 	session_start();
 	$_SESSION['user'] = $username;
 	header("Location: index.php");
