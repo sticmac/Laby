@@ -6,11 +6,15 @@ function login($user, $pass) {
 		return false;
 	}
 	else { //On a réussi à se connecter !
-		session_start();
 		$_SESSION["user"] = $user;
 		return true;
 	}
 }		
+
+function logout() {
+	$_SESSION = array();
+	session_destroy();
+}
 
 function getUser($xml, $login, $pass) {
 	if (isRegistered($login, $pass)) {

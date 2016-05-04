@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function navbar() {
 ?>
 <nav class ="navbar navbar-default">
@@ -21,7 +23,7 @@ function navbar() {
 	else {?>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><?php echo $_SESSION['user']; ?></a></li>
-				<li><a href='logout.php'>Log out</a></li>
+				<li><a href='auth.php?action=logout'>Log out</a></li>
 			</ul>
 <?php   } ?>
                 </div>
