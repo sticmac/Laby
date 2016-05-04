@@ -3,18 +3,16 @@
 <head>
 	<title>Laby - Login</title>
 	<link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>						
+	<link type="text/css" rel="stylesheet" href="./css/laby.css"/>						
 </head>
 <body>	
 
 <div class="container">
-	<?php
-	if (isset($_GET["failed"])) {
-	echo "<div class=\"row\">";
-	echo	"<div id=\"refused\" class=\"col-md-offset-3 col-md-6 alert alert-dismissible alert-danger text-center\">";
-	echo		"<strong>Accès refusé</strong>";
-	echo	"</div>";
-	echo "</div>";
-	}?>
+	<div class="row">
+		<div id="refused" class="col-md-offset-3 col-md-6 alert alert-dismissible alert-danger text-center">
+			<strong>Accès refusé</strong>
+		</div>
+	</div>
 	<div class="row">
 	<div class="col-md-6 col-md-offset-3 well">
 	<form class="form-horizontal" method='post' action='auth.php'>
