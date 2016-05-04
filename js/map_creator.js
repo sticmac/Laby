@@ -7,9 +7,9 @@ var lenCase = 0;
 var selectedCaseX = 0;
 var selectedCaseY = 0;
 var currentMap = [0,0];
-var maps = [];
+var maps = [[]];
 
-function createGrid(mapX, mapY) {
+function createGrid() {
 	//Création de la carte vide
 	var table = "<table>\n";
 	for (var y = 0 ; y < lines ; y++) {
@@ -70,7 +70,22 @@ function update() {
 }
 
 function sendMap() {
-	
+	saveMap();
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "./save.php?action=save");
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4){
+			if (xhr.status != 200){
+				console.log("Error "+xhr.status);
+			}
+		}
+	}
+	xhr.send("json="+JSON.stringify(maps));
+	alert("Map créée");
+	//console.log(maps);
+	//console.log(JSON.stringify(maps));
+	location.reload();
 }
 
 function addMap() {
@@ -82,20 +97,39 @@ function addMap() {
 function changeMap(x, y) {
 	saveMap();
 	currentMap = [x, y];
-	createGrid(x, y);
+	if (!maps[currentMap[0]]) {
+		initMap();
+	}
+	else if (!maps[currentMap[0]][currentMap[1]]) {
+		initMap();
+	}
+	createGrid();
 }
 
 function saveMap() {
-	for (var y = 0 ; y < lines ; y++) {
-		for (var x = 0 ; x < columns ; x++) {
+	for (var x = 0 ; x < columns ; x++) {
+		for (var y = 0 ; y < lines ; y++) {
 			maps[currentMap[0]][currentMap[1]][x][y] = document.getElementById(x+","+y).className;
+		}
+	}
+}
+
+function initMap() {
+	if (!maps[currentMap[0]]) {
+		maps[currentMap[0]] = new Array();
+	}
+	maps[currentMap[0]][currentMap[1]] = new Array()
+	for (var x = 0 ; x < columns ; x++) {
+		maps[currentMap[0]][currentMap[1]][x] = new Array()
+		for (var y = 0 ; y < lines ; y++) {
+			maps[currentMap[0]][currentMap[1]][x][y] = "ground";
 		}
 	}
 }
 
 function go() {
 	changeSizes();
-	maps[0][0] = [columns][lines];
-	createGrid(0,0);
+	initMap();
+	createGrid();
 	setInterval(update, 100);
 }
