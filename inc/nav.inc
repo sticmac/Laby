@@ -14,7 +14,7 @@ function navbar() {
                                 <li><a href="./editor.php">Editeur</a></li>
 			</ul>
 <?php
-	if(empty($_SESSION) && empty($SESSION['user'])) {?>
+	if(empty($_SESSION) && empty($_SESSION['user'])) {?>
                         <ul class="nav navbar-nav navbar-right">
                                 <li><a href='login.php'>Log in</a></li>
 			</ul>

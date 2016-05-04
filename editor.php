@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>Editeur de carte</title>
+	<title>Laby - Editeur de carte</title>
 	<script src="js/map_creator.js"></script>
         <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="./css/laby.css" />

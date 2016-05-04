@@ -8,7 +8,7 @@
         <link type="text/css" rel="stylesheet" href="./css/laby.css" />
 </head>
 <body onload="go()">
-	<?php navbar() ?>
+	<?php navbar(); ?>
 
 	<div id="laby" class="col-md-8"/>
 
