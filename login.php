@@ -19,7 +19,7 @@
 		<fieldset>
 			<legend>Login</legend>
 			<div class="form-group">
-				<label for="nom" class="col-lg-3 control-label">Email</label>
+				<label for="nom" class="col-lg-3 control-label">Identifiant</label>
 				<div class="col-lg-9">
 					<input type="text" class="form-control" name="user">
 				</div>
@@ -35,7 +35,7 @@
 			<div class="form-group">
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary btn-lg">Connexion</button>
-					<button type="reset" class="btn btn-default btn-lg">Annuler</button>
+					<button type="reset" class="btn btn-default btn-lg" onclick="window.location = document.referrer;">Annuler</button>
 				</div>
 			</div>	
 		</fieldset>

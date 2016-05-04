@@ -1,4 +1,9 @@
-<?php require_once('inc/nav.inc'); ?>
+<?php require_once('inc/nav.inc'); 
+
+if (empty($_SESSION["user"])) {
+	header("Location: login.php"); //Impossible de jouer si deconnecté
+	exit;
+}?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
