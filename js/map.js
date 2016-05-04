@@ -42,7 +42,7 @@ function createGrid(xRoom, yRoom) { //crée la grille correspondant à la salle 
 	for (var y = 0 ; y < lines ; y++) {
 		table += "<tr>\n";
 		for (var x = 0 ; x < columns ; x++) {
-			var classname = map[xRoom][yRoom].cases[x][y].nature;
+			var classname = map[xRoom][yRoom][x][y];
 			table += "<td class='"+classname+"' style='padding: "+lenCase+"px;' id='"+x+","+y+"'></td>";
 		}
 		table += "</tr>\n";
