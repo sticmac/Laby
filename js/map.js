@@ -42,14 +42,14 @@ function createGrid(xRoom, yRoom) { //crée la grille correspondant à la salle 
 	for (var y = 0 ; y < lines ; y++) {
 		table += "<tr>\n";
 		for (var x = 0 ; x < columns ; x++) {
-			var classname = map[0].cases[x][y].nature;
+			var classname = map[xRoom][yRoom].cases[x][y].nature;
 			table += "<td class='"+classname+"' style='padding: "+lenCase+"px;' id='"+x+","+y+"'></td>";
 		}
 		table += "</tr>\n";
 	}
 	table += "</table>\n";
 	document.getElementById("laby").innerHTML = table;
-	document.getElementById(5+","+7).classList.add("char");
+	document.getElementById(character.roomCase[0]+","+character.roomCase[1]).classList.add("char");
 }
 
 function update() {
@@ -99,7 +99,9 @@ function changePos(evt) {
 				character.roomCase[0]--;
 			}
 			else if (character.roomCase[0] == 0 && canMoveToRoom(character.room[0]-1, character.room[1])) {
-				createGrid(character.room[0]-1, character.room[1]);
+				character.roomCase[0] = columns-1;
+				character.room[0]--;
+				createGrid(character.room[0], character.room[1]);
 			}
 			break;
 		case 38:
@@ -109,7 +111,9 @@ function changePos(evt) {
 				character.roomCase[1]--;
 			}
 			else if (character.roomCase[1] == 0 && canMoveToRoom(character.room[0], character.room[1]-1)) {
-				createGrid(character.room[0], character.room[1]-1);
+				character.roomCase[1] = lines-1;
+				character.room[1]--;
+				createGrid(character.room[0], character.room[1]);
 			}
 			break;
 		case 39:
@@ -119,7 +123,9 @@ function changePos(evt) {
 				character.roomCase[0]++;
 			}
 			else if (character.roomCase[0] == columns-1 && canMoveToRoom(character.room[0]+1, character.room[1])) {
-				createGrid(character.room[0]+1, character.room[1]);
+				character.roomCase[0] = 0;
+				character.room[0]++;
+				createGrid(character.room[0], character.room[1]);
 			}
 			break;
 		case 40:
@@ -128,8 +134,10 @@ function changePos(evt) {
 			if (canMoveToCase(character.roomCase[0], character.roomCase[1]+1)) {
 				character.roomCase[1]++;
 			}
-			else if (character.roomCase[0] == lines-1 && canMoveToRoom(character.room[0], character.room[1]+1)) {
-				createGrid(character.room[0], character.room[1]+1);
+			else if (character.roomCase[1] == lines-1 && canMoveToRoom(character.room[0], character.room[1]+1)) {
+				character.roomCase[1] = 0;
+				character.room[1]++;
+				createGrid(character.room[0], character.room[1]);
 			}
 			break;
 	}
@@ -147,7 +155,7 @@ function canMoveToCase(x, y) {
 }
 
 function canMoveToRoom(x, y) {
-	if (map[x][y]) return true;
+	if (map[x] && map[x][y]) return true;
 	else return false;
 }
 	
