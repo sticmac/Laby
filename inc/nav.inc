@@ -16,7 +16,8 @@ function navbar() {
 <?php
 	if(empty($_SESSION) && empty($_SESSION['user'])) {?>
                         <ul class="nav navbar-nav navbar-right">
-                                <li><a href='login.php'>Log in</a></li>
+				<li><a href='login.php'>Log in</a></li>
+				<li><a href='subscribe.php'><strong>Sign up</strong></a></li>
 			</ul>
 <?php
 	}
