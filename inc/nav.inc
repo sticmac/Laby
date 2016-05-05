@@ -16,15 +16,15 @@ function navbar() {
 <?php
 	if(empty($_SESSION) && empty($_SESSION['user'])) {?>
                         <ul class="nav navbar-nav navbar-right">
-				<li><a href='login.php'>Log in</a></li>
-				<li><a href='subscribe.php'><strong>Sign up</strong></a></li>
+				<li><a href='login.php'>Connexion</a></li>
+				<li><a href='subscribe.php'><strong>S'inscrire</strong></a></li>
 			</ul>
 <?php
 	}
 	else {?>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><?php echo $_SESSION['user']; ?></a></li>
-				<li><a href='auth.php?action=logout'>Log out</a></li>
+				<li><a href='auth.php?action=logout'>Déconnexion</a></li>
 			</ul>
 <?php   } ?>
                 </div>
