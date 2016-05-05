@@ -1,5 +1,6 @@
 <?php
 session_start();
+if (isset($_SESSION["error"])) unset($_SESSION["error"]); //Si un message d'erreur est défini, il n'a pas lieu d'être.
 
 function navbar() {
 ?>

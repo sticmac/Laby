@@ -1,16 +1,18 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<title>Laby - Inscription</title>
-	<link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>						
-	<link type="text/css" rel="stylesheet" href="./css/laby.css"/>						
+	<link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="./css/laby.css"/>
+	<script src="js/log.js"></script>
 </head>
 <body>	
 
 <div class="container">
 	<div class="row">
 		<div id="refused" class="col-md-offset-3 col-md-6 alert alert-dismissible alert-danger text-center">
-			<strong>Données invalides</strong>
+			<strong><?php echo $_SESSION["error"]; ?></strong>
 		</div>
 	</div>
 	<div class="row">
@@ -42,7 +44,7 @@
 			
 			<div class="form-group">
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary btn-lg">Connexion</button>
+					<button type="submit" class="btn btn-primary btn-lg">Inscription</button>
 					<button type="reset" class="btn btn-default btn-lg" onclick="window.location = document.referrer;">Annuler</button>
 				</div>
 			</div>	

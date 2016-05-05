@@ -21,6 +21,16 @@ include_once("inc/nav.inc"); ?>
 			<strong>Authentification réussie.</strong>
 		</div>
 	</div>
+
+	<div class="page-header">
+	  <h1>Bienvenue sur Laby</h1>
+	</div>
+	<div class="row">
+	  <div class="col-md-12">
+		<p>Salutations jeune joueur, et bienvenue dans Laby.<br/>Es-tu prêt à tenter de sortir le plus vite possible des labyrinthes entièrement fabriqués par le reste de la communauté ? Dans ce cas, depêche-toi de nous rejoindre : inscris-toi et viens jouer !</p>
+		<p>Encore mieux, si tu es épris d'un élan de sadisme sans nom, tu peux venir créer ta propre carte et défier les autres joueurs à oser venir s'y confronter...</p>
+	  </div>
+	</div>
 </div>
 </body>
 </html>
