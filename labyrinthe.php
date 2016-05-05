@@ -1,4 +1,9 @@
-<?php require_once('inc/nav.inc'); ?>
+<?php require_once('inc/nav.inc'); 
+
+if (empty($_SESSION["user"])) {
+	header("Location: login.php"); //Impossible de jouer si deconnecté
+	exit;
+}?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,7 +13,7 @@
         <link type="text/css" rel="stylesheet" href="./css/laby.css" />
 </head>
 <body onload="go()">
-	<?php navbar() ?>
+	<?php navbar(); ?>
 
 	<div id="laby" class="col-md-8"/>
 

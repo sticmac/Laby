@@ -1,20 +1,20 @@
 <?php
 
-header("Content-type: text/json");
+$xml = simplexml_load_file("xml/maps.xml");
 
-echo "[{\"cases\" : [";
-for ($x = 0 ; $x < 15 ; $x++) {
-	echo "[";
-	for ($y = 0 ; $y < 10 ; $y++) {
-		echo "{\"nature\" : ";
-		if ($x == 0 || $y == 0 || $x == 14 || $y == 9) { echo "\"wall\""; }
-		else { echo "\"ground\""; }
-		echo "}";
-		if ($y != 9) { echo ", "; }
-	}
-	echo "]";
-	if ($x != 14) { echo ", "; }
+if (empty($_GET) || empty($_GET["action"])){
+	header("Content-type: text/json");
+
+	$maps = $xml->xpath("map");
+	$index = rand(0, count($maps)-1);
+	echo (string)$maps[$index];
+	exit;
 }
-echo "]}";
-echo "]";
+elseif ($_GET["action"] == "save") {
+	$u = $xml->addChild('map', $_POST["json"]);
+	if (!$xml->asXML('xml/maps.xml')) {
+		echo "Impossible de sauvegarder le fichier XML";
+	}
+}
+
 ?>

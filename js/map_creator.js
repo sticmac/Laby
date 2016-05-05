@@ -6,7 +6,7 @@ var columns = 15;
 var lenCase = 0;
 var selectedButton = "ground";
 var currentMap = [0,0];
-var maps = [[]];
+var maps = [];
 
 function createGrid() {
 	//Création de la carte vide
