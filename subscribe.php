@@ -1,11 +1,11 @@
-<?php session_start(); ?>
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<title>Laby - Inscription</title>
-	<link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>						
 	<link type="text/css" rel="stylesheet" href="./css/laby.css"/>
-	<script src="js/log.js"></script>
+	<script src="js/log.js"></script>						
 </head>
 <body>	
 
@@ -17,7 +17,7 @@
 	</div>
 	<div class="row">
 	<div class="col-md-6 col-md-offset-3 well">
-	<form class="form-horizontal" method='post' action='auth.php?action=subscribe'>
+	<form class="form-horizontal" method='post' action='auth.php?action=subscribe' onSubmit="return samePass();">
 		<fieldset>
 			<legend>Inscription</legend>
 			<div class="form-group">
