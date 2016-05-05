@@ -7,7 +7,7 @@ var lenCase = 0;
 var selectedCaseX = 0;
 var selectedCaseY = 0;
 var currentMap = [0,0];
-var maps = [[]];
+var maps = [];
 
 function createGrid() {
 	//Création de la carte vide
@@ -85,7 +85,7 @@ function sendMap() {
 	alert("Map créée");
 	//console.log(maps);
 	//console.log(JSON.stringify(maps));
-	location.reload();
+	//location.reload();
 }
 
 function addMap() {
