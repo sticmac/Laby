@@ -10,3 +10,7 @@ td {
 #refused:target, #signedup:target, #loggedin:target {
 	display: block;
 }
+
+#b_creator > input {
+	width: 4%;
+}

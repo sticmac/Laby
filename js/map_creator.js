@@ -4,8 +4,7 @@
 var lines = 10;
 var columns = 15;
 var lenCase = 0;
-var selectedCaseX = 0;
-var selectedCaseY = 0;
+var selectedButton = "ground";
 var currentMap = [0,0];
 var maps = [];
 
@@ -15,7 +14,7 @@ function createGrid() {
 	for (var y = 0 ; y < lines ; y++) {
 		table += "<tr>\n";
 		for (var x = 0 ; x < columns ; x++) {
-			table += "<td class='"+maps[currentMap[0]][currentMap[1]][x][y]+"' onclick=\"selectCase("+x+","+y+");\" style='padding: "+lenCase+"px; background-color: "+getBackgroundFromElement()+";' id='"+x+","+y+"'></td>";
+			table += "<td class='"+maps[currentMap[0]][currentMap[1]][x][y]+"' onclick=\"changeClass("+x+","+y+");\" style='padding: "+lenCase+"px; background-color: "+getBackgroundFromElement()+";' id='"+x+","+y+"'></td>";
 		}
 		table += "</tr>\n";
 	}
@@ -39,19 +38,24 @@ function getBackgroundFromElement(classname) {
 		case "door":
 			return "img/door.png";
 			break;
+		case "chest":
+			return "img/chest.png";
+			break;
+		case "key":
+			return "img/key.png";
+			break;
 		default:
 			return "img/grass.png";
 			break;
 	}
 }
 
-function selectCase(x, y) {
-	selectedCaseX = x;
-	selectedCaseY = y;
+function selectButton(but) {
+	selectedButton = but;
 }
 
-function changeClass(classe) {
-	document.getElementById(selectedCaseX+","+selectedCaseY).className = classe;
+function changeClass(x, y) {
+	document.getElementById(x+","+y).className = selectedButton;
 	
 }
 
@@ -83,15 +87,15 @@ function sendMap() {
 	}
 	xhr.send("json="+JSON.stringify(maps));
 	alert("Map créée");
-	//console.log(maps);
-	//console.log(JSON.stringify(maps));
 	//location.reload();
 }
 
 function addMap() {
 	x = document.getElementsByName("coorX")[0].value;
 	y = document.getElementsByName("coorY")[0].value;
-	document.getElementById("boutons").innerHTML += "<td> <input type=\"button\" value=\""+x+","+y+"\" onclick=\"changeMap("+x+","+y+");\" /> </td>";
+	if (parseInt(x) == x && parseInt(y) == y && Math.abs(x) <= 50 && Math.abs(y) <= 50) {
+		document.getElementById("boutons").innerHTML += "<td> <input type=\"button\" value=\""+x+","+y+"\" onclick=\"changeMap("+x+","+y+");\" /> </td>";
+	}
 }
 
 function changeMap(x, y) {
