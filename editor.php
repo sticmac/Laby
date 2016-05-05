@@ -12,35 +12,23 @@
 	<?php navbar(); ?>
 	
 	<div id="laby" class="col-md-8"></div>
-	<table>
-		<tr><td> <input type="button" value="Sol" onclick="changeClass();" /> </td></tr>
-		<tr><td> <input type="button" value="Mur" onclick="changeClass('wall');" /> </td></tr>
-		<tr><td> <input type="button" value="Porte ouverte" onclick="changeClass();" /> </td></tr>
-		<tr><td> <input type="button" value="Porte fermée" onclick="changeClass();" /> </td></tr>
-		<tr><td> <input type="button" value="Coffre" onclick="changeClass();" /> </td></tr>
-		<tr><td> <input type="button" value="UPDATE" onclick="sendMap();" /> </td></tr>
-	</table>
-	<table>
-		<tr id="boutons">
-			<td> <input type="button" value="0,0" onclick="changeMap(0,0);" /> </td>
-		</tr>
-	</table>
+				<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('ground');" checked="checked">Sol</label>
+				<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('wall');" >Mur</label>
+				<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('ground');" >Porte ouverte</label>
+				<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('door');" >Porte fermée</label>
+				<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('ground');" >Coffre</label>
+	<br>
+	<br>
+	<div id="boutons">
+		<td> <input type="button" value="0,0" onclick="changeMap(0,0);" /> </td>
+	</div>
+	<br>
 	<table id="b_creator">
-		Map X : <select name="coorX">
-			<option value="-2">-2</option>
-			<option value="-1">-1</option>
- 			<option value="0">0</option> 
-			<option value="1">1</option>
-			<option value="2">2</option>
-		</select>
-		Map Y : <select name="coorY">
-			<option value="-2">-2</option>
-			<option value="-1">-1</option>
- 			<option value="0">0</option> 
-			<option value="1">1</option>
-			<option value="2">2</option>
-		</select>
+		<input type="text" name="coorX">
+		<input type="text" name="coorY">
 		Ajouter : <input type="button" value="+" onclick="addMap();" />
 	</table>
+	<br>
+	<input type="button" value="Envoyer" onclick="sendMap();" >
 </body>
 </html>
