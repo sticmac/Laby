@@ -3,8 +3,9 @@
 <html lang="fr">
 <head>
 	<title>Laby - Inscription</title>
-	<link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>						
-	<link type="text/css" rel="stylesheet" href="./css/laby.css"/>						
+	<link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="./css/laby.css"/>
+	<script src="js/log.js"></script>
 </head>
 <body>	
 
