@@ -13,9 +13,15 @@ if (empty($_SESSION["user"])) {
         <link type="text/css" rel="stylesheet" href="./css/laby.css" />
 </head>
 <body onload="go()">
-	<?php navbar(); ?>
+<?php navbar(); ?>
 
-	<div id="laby" class="col-md-8"/>
+	<div id="laby" class="col-md-8"></div>
+	<div class="col-md-3 well">
+		<h3>Inventaire</h3>
+		<div id="inventory">
+			Clés : 0
+		</div>
+	</div>
 
 	<script language="javascript">document.onkeydown = changePos;</script>
 

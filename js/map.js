@@ -155,7 +155,7 @@ function changePos(evt) {
 	if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "key") {
 		document.getElementById(lastCase[0]+','+lastCase[1]).classList.remove("key", "char");
 		document.getElementById(lastCase[0]+','+lastCase[1]).classList.add("ground", "char");
-		nbKeys++;
+		addKeys(1);
 	}
 	
 	if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "chest") {
@@ -164,16 +164,38 @@ function changePos(evt) {
 }
 
 function canMoveToCase(x, y) {
+	//Si on ne sort pas de la grille
 	if(x < columns && y < lines && x >= 0 && y >= 0
+			//et que l'on ne va pas dans un mur...
 			&& !document.getElementById(x+','+y).classList.contains("wall")) {
-		return true;
+		//Cas de la porte
+		if(document.getElementById(x+','+y).classList.contains("door")) {
+			return passThroughDoor(x,y);
+		}
+		else {	
+			return true;
+		}
 	}
 	else return false;
+}
+
+function passThroughDoor(x, y) {
+	if (nbKeys == 0) return false;
+	else {
+		addKeys(-1);
+		document.getElementById(x+','+y).className = "ground";
+		return true;
+	}
 }
 
 function canMoveToRoom(x, y) {
 	if (map[x] && map[x][y]) return true;
 	else return false;
+}
+
+function addKeys(nb) {
+	nbKeys += nb;
+	document.getElementById("inventory").innerHTML = "Clés : "+nbKeys;
 }
 	
 function go() {
