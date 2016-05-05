@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,7 +11,7 @@
 <div class="container">
 	<div class="row">
 		<div id="refused" class="col-md-offset-3 col-md-6 alert alert-dismissible alert-danger text-center">
-			<strong>Accès refusé</strong>
+			<strong><?php echo $_SESSION["error"] ?></strong>
 		</div>
 	</div>
 	<div class="row">

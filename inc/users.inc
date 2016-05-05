@@ -2,7 +2,8 @@
 function login($user, $pass) {
 	$xml = simplexml_load_file("./xml/users.xml");
 	$ret = $xml->xpath("user[@login='".$user."' and @password='".$pass."']");
-	if (count($ret) == 0) { //L'authentification a écoutée
+	if (count($ret) == 0) { //L'authentification a échouée
+		$_SESSION["error"] = "L'authentification a échouée";
 		return false;
 	}
 	else { //On a réussi à se connecter !
@@ -21,11 +22,15 @@ function subscribe($user, $password) {
 	$u = $xml->addChild('user');
 	$u['user'] = $user;
 	$u['password'] = $password;
-	if ($xml->asXML('./xml/users.xml')) {
+	if ($xml->asXML('./xml/users.xml') && count($xml->xpath("user[@login='$user']"))==0) {
 		return true;
 	}
+	elseif (count($xml->xpath("user[@login='$user']"))!=0) {
+		$_SESSION["error"] = "L'utilisateur est déjà existant";
+		return false;
+	}
 	else {
-		echo "Impossible de sauvegarder le fichier XML";
+		$_SESSION["error"] = "Impossible de sauvegarder le fichier XML";
 		return false;
 	}
 }	
