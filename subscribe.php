@@ -42,7 +42,7 @@
 			
 			<div class="form-group">
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary btn-lg">Connexion</button>
+					<button type="submit" class="btn btn-primary btn-lg">Inscription</button>
 					<button type="reset" class="btn btn-default btn-lg" onclick="window.location = document.referrer;">Annuler</button>
 				</div>
 			</div>	
