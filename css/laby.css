@@ -3,10 +3,10 @@ td {
 	background-size: 100%;
 }
 
-#refused {
-	visibility: hidden;
+#refused, #signedup, #loggedin {
+	display: none;
 }
 
-#refused:target {
-	visibility: visible;
+#refused:target, #signedup:target, #loggedin:target {
+	display: block;
 }

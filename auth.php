@@ -10,7 +10,7 @@ if (isset($_GET['action'])) { //Si on se deconnecte
 	}
 	else if ($_GET['action'] == "subscribe") {
 		if(subscribe($_POST["user"], md5($_POST["password1"]))) {
-			header("Location: index.php");
+			header("Location: index.php#signedup");
 			exit;
 		}
 		else {
@@ -24,7 +24,7 @@ else {
 	$password = $_POST['password'];
 
 	if(login($username, md5($password))) { 
-		header("Location: index.php");
+		header("Location: index.php#loggedin");
 		exit;
 	}
 	else {
