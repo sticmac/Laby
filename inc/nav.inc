@@ -13,6 +13,7 @@ function navbar() {
                         <ul class="nav navbar-nav">
                                 <li><a href="./labyrinthe.php">Labyrinthe</a></li>
                                 <li><a href="./editor.php">Editeur</a></li>
+                                <li><a href="./score.php">Score</a></li>
 			</ul>
 <?php
 	if(empty($_SESSION) && empty($_SESSION['user'])) {?>

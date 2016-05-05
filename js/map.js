@@ -159,6 +159,7 @@ function changePos(evt) {
 	}
 	
 	if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "chest") {
+		alert("Vous avez gagné !");
 		document.location.href="index.php";
 	}
 }
