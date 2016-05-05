@@ -5,6 +5,7 @@ var lines = 10;
 var columns = 15;
 var lenCase = 0; //longueur du côté d'une case (pour l'affichage)
 var character; //personnage à déplacer
+var nbKeys = 0;
 var map = new Object(); //tableau du json parsé caractérisant toutes les salles du labyrinthe
 
 var lastCase = [0,0]; //sauvegarde de la dernière case où se trouvait le personnage avant déplacement 
@@ -82,6 +83,12 @@ function getBackgroundFromElement(classname) {
 		case "door":
 			return "img/door.png";
 			break;
+		case "chest":
+			return "img/chest.png";
+			break;
+		case "key":
+			return "img/key.png";
+			break;
 		default:
 			return "img/grass.png";
 			break;
@@ -144,6 +151,16 @@ function changePos(evt) {
 	lastCase[0] = character.roomCase[0];
 	lastCase[1] = character.roomCase[1];
 	document.getElementById(lastCase[0]+','+lastCase[1]).classList.add("char");
+	
+	if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "key") {
+		document.getElementById(lastCase[0]+','+lastCase[1]).classList.remove("key", "char");
+		document.getElementById(lastCase[0]+','+lastCase[1]).classList.add("ground", "char");
+		nbKeys++;
+	}
+	
+	if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "chest") {
+		document.location.href="index.php";
+	}
 }
 
 function canMoveToCase(x, y) {

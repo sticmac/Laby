@@ -38,6 +38,12 @@ function getBackgroundFromElement(classname) {
 		case "door":
 			return "img/door.png";
 			break;
+		case "chest":
+			return "img/chest.png";
+			break;
+		case "key":
+			return "img/key.png";
+			break;
 		default:
 			return "img/grass.png";
 			break;
@@ -81,7 +87,7 @@ function sendMap() {
 	}
 	xhr.send("json="+JSON.stringify(maps));
 	alert("Map créée");
-	location.reload();
+	//location.reload();
 }
 
 function addMap() {

@@ -17,11 +17,13 @@ if (empty($_SESSION["user"])) {
 	<?php navbar(); ?>
 	
 	<div id="laby" class="col-md-8"></div>
-			<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('ground');" checked="checked">Sol</label>
-			<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('wall');" >Mur</label>
-			<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('ground');" >Porte ouverte</label>
-			<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('door');" >Porte fermée</label>
-			<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('ground');" >Coffre</label>
+		<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('ground');" checked="checked">Sol</label>
+		<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('wall');" >Mur</label>
+		<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('ground');" >Porte ouverte</label>
+		<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('door');" >Porte fermée</label>
+		<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('chest');" >Coffre</label>
+		<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('key');" >Clé</label>
+		<label class="radio-inline"><input type="radio" name="optradio" onclick="selectButton('chest');" >Sortie</label>
 	<br>
 	<br>
 	<div id="boutons">
