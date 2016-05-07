@@ -35,14 +35,6 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="Confirmation du mot de passe" class="col-lg-3 control-label"><i>Confirmation du mot de passe</i></label>
-				<div class="col-lg-9">
-					<input type="password" class="form-control" name="password2">
-				</div>
-			</div>
-
-			
-			<div class="form-group">
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary btn-lg">Inscription</button>
 					<button type="reset" class="btn btn-default btn-lg" onclick="window.location = document.referrer;">Annuler</button>
