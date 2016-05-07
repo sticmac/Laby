@@ -12,5 +12,9 @@ td {
 }
 
 #b_creator > input {
-	width: 4%;
+	width: 7%;
+}
+
+#origin > input {
+	width: 7%;
 }

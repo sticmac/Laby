@@ -8,6 +8,12 @@ var selectedButton = "ground";
 var currentMap = [0,0];
 var maps = [];
 
+//Objet à passer dans la chaine JSON
+function Map(p, c) {
+	this.initPos = p;
+	this.cases = c;
+}
+
 function createGrid() {
 	//Création de la carte vide
 	var table = "<table>\n";
@@ -22,7 +28,7 @@ function createGrid() {
 	document.getElementById("laby").innerHTML = table;
 }
 
-function changeSizes() {                                                                              
+function changeSizes() { 
 	var size = document.getElementById("laby").clientWidth;
 	lenCase = size/(2*columns)-2;
 }    
@@ -85,9 +91,10 @@ function sendMap() {
 			}
 		}
 	}
-	xhr.send("json="+JSON.stringify(maps));
+	var json = new Map([document.getElementsByName("initCaseX")[0].value, document.getElementsByName("initCaseY")[0].value], maps);
+	xhr.send("json="+JSON.stringify(json));
 	alert("Map créée");
-	//location.reload();
+	location.reload();
 }
 
 function addMap() {

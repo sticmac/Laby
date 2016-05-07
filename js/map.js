@@ -27,7 +27,11 @@ function getMapPHP() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4) { //lorsque la requête est prête
 			if (xhr.status == 200) {
-				map = JSON.parse(xhr.responseText);
+				console.log(xhr.responseText);
+				var json = JSON.parse(xhr.responseText);
+				map = json.cases;
+				character = new Character(0, 0, parseInt(json.initPos[0]), parseInt(json.initPos[1]));
+				lastCase = [parseInt(json.initPos[0]),parseInt(json.initPos[1])];
 				createGrid(0,0);
 			}
 			else { console.log("Erreur "+xhr.status); }
@@ -202,7 +206,5 @@ function addKeys(nb) {
 function go() {
 	changeSizes();
 	getMapPHP();
-	character = new Character(0,0,5,7);
-	lastCase = [5,7];
 	setInterval(update, 100);
 }

@@ -23,7 +23,6 @@ if (empty($_SESSION["user"])) {
 
 		<div id="origin">
 			<h4>Placement d'origine</h4>
-			Salle de départ : X <input type="text" name="initRoomX"> Y <input type="text"name="initRoomY">
 			Case de départ : X <input type="text" name="initCaseX"> Y <input type="text" name="initCaseY">
 		</div>
 
