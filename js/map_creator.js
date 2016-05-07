@@ -50,6 +50,9 @@ function getBackgroundFromElement(classname) {
 		case "key":
 			return "img/key.png";
 			break;
+		case "exit":
+			return "img/exit.png";
+			break;
 		default:
 			return "img/grass.png";
 			break;

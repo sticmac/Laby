@@ -1,4 +1,4 @@
-//Génération de la map du labyrinthe
+//Génération de la map du labyrinthep
 
 //Variables globales
 var lines = 10;
@@ -92,6 +92,9 @@ function getBackgroundFromElement(classname) {
 			break;
 		case "key":
 			return "img/key.png";
+			break;
+		case "exit":
+			return "img/exit.png";
 			break;
 		default:
 			return "img/grass.png";
