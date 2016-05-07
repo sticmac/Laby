@@ -165,7 +165,7 @@ function changePos(evt) {
 		addKeys(1);
 	}
 	
-	if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "chest") {
+	if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "exit") {
 		alert("Vous avez gagné !");
 		document.location.href="index.php";
 	}
