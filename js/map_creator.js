@@ -94,7 +94,7 @@ function sendMap() {
 			}
 		}
 	}
-	var json = new Map([document.getElementsByName("initCaseX")[0].value, document.getElementsByName("initCaseY")[0].value], maps);
+	var json = new Map([0,0,document.getElementsByName("initCaseX")[0].value, document.getElementsByName("initCaseY")[0].value], maps);
 	xhr.send("json="+JSON.stringify(json));
 	alert("Map créée");
 	location.reload();

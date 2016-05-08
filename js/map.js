@@ -19,6 +19,13 @@ function Character(xS, yS, xC, yC) {
 	this.roomCase = [xC, yC];
 }
 
+//Objet à passer dans la chaine JSON
+function Map(p, c) {
+	this.initPos = p;
+	this.cases = c;
+}
+
+
 function getMapPHP() {
 	var xhr = new XMLHttpRequest();
 	var json = new Object();
@@ -30,9 +37,9 @@ function getMapPHP() {
 				console.log(xhr.responseText);
 				var json = JSON.parse(xhr.responseText);
 				map = json.cases;
-				character = new Character(0, 0, parseInt(json.initPos[0]), parseInt(json.initPos[1]));
-				lastCase = [parseInt(json.initPos[0]),parseInt(json.initPos[1])];
-				createGrid(0,0);
+				character = new Character(parseInt(json.initPos[0]), parseInt(json.initPos[1]), parseInt(json.initPos[2]), parseInt(json.initPos[3]));
+				lastCase = [parseInt(json.initPos[2]),parseInt(json.initPos[3])];
+				createGrid(parseInt(json.initPos[0]),parseInt(json.initPos[1]));
 			}
 			else { console.log("Erreur "+xhr.status); }
 		}
@@ -55,6 +62,20 @@ function createGrid(xRoom, yRoom) { //crée la grille correspondant à la salle 
 	table += "</table>\n";
 	document.getElementById("laby").innerHTML = table;
 	document.getElementById(character.roomCase[0]+","+character.roomCase[1]).classList.add("char");
+}
+
+function saveMap() {
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "./save.php?action=saveParty");
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4) { //lorsque la requête est prête
+			if (xhr.status != 200) {
+				console.log("Erreur "+xhr.status); }
+		}
+	}
+
+	xhr.send("json="+JSON.stringify(new Map([lastRoom[0], lastRoom[1], lastCase[0], lastCase[1]], map)));
 }
 
 function update() {

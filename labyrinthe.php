@@ -21,6 +21,8 @@ if (empty($_SESSION["user"])) {
 		<div id="inventory">
 			Clés : 0
 		</div>
+		<h3>Sauvegarder</h3>
+		<input type="button" value="Sauvegarder" onclick="saveMap();" />
 	</div>
 
 	<script language="javascript">document.onkeydown = changePos;</script>

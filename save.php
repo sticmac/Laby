@@ -1,20 +1,13 @@
 <?php
+include_once("inc/save.inc");
 
-$xml = simplexml_load_file("xml/maps.xml");
-
-if (empty($_GET) || empty($_GET["action"])){
-	header("Content-type: text/json");
-
-	$maps = $xml->xpath("map");
-	$index = rand(0, count($maps)-1);
-	echo (string)$maps[$index];
-	exit;
+if (empty($_GET) || empty($_GET["action"])){ //chargement d'une map au hasard (nouvelle partie par défaut)
+	loadParty();
 }
-elseif ($_GET["action"] == "save") {
-	$u = $xml->addChild('map', $_POST["json"]);
-	if (!$xml->asXML('xml/maps.xml')) {
-		echo "Impossible de sauvegarder le fichier XML";
-	}
+elseif ($_GET["action"] == "save") { //sauvegarde d'une nouvelle map créée dans l'éditeur dans la base de données xml
+	saveNewmap($_POST["json"]);
 }
-
+elseif ($_GET["action"] == "saveParty") { //sauvegarde de la partie d'un joueur connecté dans la base de données des utilisateurs
+	saveParty($_POST["json"]);
+}
 ?>
