@@ -191,24 +191,43 @@ function changePos(evt) {
 	}
 	
 	else if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "exit") {
-		score += (new Date()).getTime() - timeIni;
-		alert("Vous avez gagné ! Votre score est de : "+score);
-		
-		//Reset de la sauvegarde
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "./save.php?action=reset");
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4) { //lorsque la requête est prête
-				if (xhr.status != 200) {
-					console.log("Erreur "+xhr.status); }
-				else {
-					document.location.href="index.php";
+		endGame();
+	}
+}
+
+function endGame() {
+	score += (new Date()).getTime() - timeIni;
+	alert("Vous avez gagné ! Votre score est de : "+score);
+
+
+	//Reset de la sauvegarde
+	var xhr1 = new XMLHttpRequest();
+	xhr1.open("GET", "./save.php?action=reset");
+	xhr1.onreadystatechange = function() {
+		if (xhr1.readyState == 4) { //lorsque la requête est prête
+			if (xhr1.status == 200) {
+				//Enregistrement du score
+				var xhr2 = new XMLHttpRequest();
+				xhr2.open("POST", "./save.php?action=score");
+				xhr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhr2.onreadystatechange = function() {
+					if(xhr2.readyState == 4) {
+						if (xhr2.status == 200) {
+							document.location.href="index.php";
+						}
+						else {
+							console.log("Erreur "+xhr2.status);
+						}
+					}
 				}
+				xhr2.send("score="+score);		
+			}
+			else {
+				console.log("Erreur "+xhr1.status);
 			}
 		}
-		xhr.send(null);
-		
 	}
+	xhr1.send(null);
 }
 
 function canMoveToCase(x, y) {

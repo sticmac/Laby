@@ -49,6 +49,16 @@ function loadParty() {
 	}
 }
 
+function saveScore($score) {
+	$scores = simplexml_load_file("./xml/scores.xml");
+
+	$s = $scores->addchild('score', $_POST['score']);
+	$s['login'] = $_SESSION['user'];
+	if(!$scores->asXML('./xml/scores.xml')){
+		echo "Impossible d'enregistrer le fichier XML";
+	}
+}
+
 function resetParty() {
 	saveParty("");
 }

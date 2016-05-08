@@ -1,4 +1,5 @@
-<?php include_once("inc/nav.inc"); ?>
+<?php include_once("inc/nav.inc"); 
+include_once("inc/score.inc");?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +15,10 @@
 		<div class="page-header">
 		  <h1>Scores des joueurs</h1>
 		</div>
-		<div id="score" class="well">
-		</div>
+		<table id="score" class="table">
+		<tr><th>Login</th><th>Score</th></tr>
+		<?php displayScores(); ?>
+		</table>
 	</div>
 	</div>
 </div>

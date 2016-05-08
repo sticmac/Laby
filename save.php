@@ -13,4 +13,7 @@ elseif ($_GET["action"] == "saveParty") { //sauvegarde de la partie d'un joueur 
 elseif ($_GET["action"] == "reset") {
 	resetParty();
 }
+elseif ($_GET["action"] == "score") {
+	saveScore($_POST["score"]);
+}
 ?>
