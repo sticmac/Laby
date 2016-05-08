@@ -1,4 +1,4 @@
-//Génération de la map du labyrinthep
+//Génération de la map du labyrinthe
 
 //Variables globales
 var lines = 10;
@@ -7,6 +7,9 @@ var lenCase = 0; //longueur du côté d'une case (pour l'affichage)
 var character; //personnage à déplacer
 var nbKeys = 0;
 var map = new Object(); //tableau du json parsé caractérisant toutes les salles du labyrinthe
+
+var timeIni = new Date(0); //Initialisation d'une date à un temps 0
+var score; //Sera la valeur de timeIni.getTime() à la fin de la partie (le temps qu'aura mis le joueur en millisecondes pour sortir du labyrinthe)
 
 var lastCase = [0,0]; //sauvegarde de la dernière case où se trouvait le personnage avant déplacement 
 var lastRoom = [0,0];
@@ -20,11 +23,11 @@ function Character(xS, yS, xC, yC) {
 }
 
 //Objet à passer dans la chaine JSON
-function Map(p, c) {
+function Map(p, c, s) {
 	this.initPos = p;
 	this.cases = c;
+	this.score = s;
 }
-
 
 function getMapPHP() {
 	var xhr = new XMLHttpRequest();
@@ -37,6 +40,7 @@ function getMapPHP() {
 				console.log(xhr.responseText);
 				var json = JSON.parse(xhr.responseText);
 				map = json.cases;
+				score = json.score;
 				character = new Character(parseInt(json.initPos[0]), parseInt(json.initPos[1]), parseInt(json.initPos[2]), parseInt(json.initPos[3]));
 				lastCase = [parseInt(json.initPos[2]),parseInt(json.initPos[3])];
 				createGrid(parseInt(json.initPos[0]),parseInt(json.initPos[1]));
@@ -75,7 +79,7 @@ function saveMap() {
 		}
 	}
 
-	xhr.send("json="+JSON.stringify(new Map([lastRoom[0], lastRoom[1], lastCase[0], lastCase[1]], map)));
+	xhr.send("json="+JSON.stringify(new Map([lastRoom[0], lastRoom[1], lastCase[0], lastCase[1]], map, score)));
 }
 
 function update() {
@@ -186,9 +190,24 @@ function changePos(evt) {
 		addKeys(1);
 	}
 	
-	if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "exit") {
-		alert("Vous avez gagné !");
-		document.location.href="index.php";
+	else if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "exit") {
+		score += timeIni.getTime();
+		alert("Vous avez gagné ! Votre score est de : "+score);
+		
+		//Reset de la sauvegarde
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "./save.php?action=reset");
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) { //lorsque la requête est prête
+				if (xhr.status != 200) {
+					console.log("Erreur "+xhr.status); }
+				else {
+					document.location.href="index.php";
+				}
+			}
+		}
+		xhr.send(null);
+		
 	}
 }
 

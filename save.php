@@ -10,4 +10,7 @@ elseif ($_GET["action"] == "save") { //sauvegarde d'une nouvelle map créée dan
 elseif ($_GET["action"] == "saveParty") { //sauvegarde de la partie d'un joueur connecté dans la base de données des utilisateurs
 	saveParty($_POST["json"]);
 }
+elseif ($_GET["action"] == "reset") {
+	resetParty();
+}
 ?>

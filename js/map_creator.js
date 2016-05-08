@@ -9,9 +9,10 @@ var currentMap = [0,0];
 var maps = [];
 
 //Objet à passer dans la chaine JSON
-function Map(p, c) {
+function Map(p, c, s) {
 	this.initPos = p;
 	this.cases = c;
+	this.score = s;
 }
 
 function createGrid() {
@@ -94,7 +95,7 @@ function sendMap() {
 			}
 		}
 	}
-	var json = new Map([0,0,document.getElementsByName("initCaseX")[0].value, document.getElementsByName("initCaseY")[0].value], maps);
+	var json = new Map([0,0,document.getElementsByName("initCaseX")[0].value, document.getElementsByName("initCaseY")[0].value], maps, 0);
 	xhr.send("json="+JSON.stringify(json));
 	alert("Map créée");
 	location.reload();

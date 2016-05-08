@@ -25,7 +25,7 @@ function saveNewMap($json) {
 function saveParty($json) {
 	$users = simplexml_load_file("xml/users.xml");
 	$u = $users->xpath("user[@login='$_SESSION[user]']")[0];
-	if (empty($u->save)) {
+	if (!isset($u->save)) {
 		$u ->addChild('save', $json);
 	}
 	else {
@@ -47,4 +47,8 @@ function loadParty() {
 	else {
 		loadRandomMap();
 	}
+}
+
+function resetParty() {
+	saveParty("");
 }
