@@ -8,7 +8,7 @@ var character; //personnage à déplacer
 var nbKeys = 0;
 var map = new Object(); //tableau du json parsé caractérisant toutes les salles du labyrinthe
 
-var timeIni = new Date(0); //Initialisation d'une date à un temps 0
+var timeIni = (new Date()).getTime(); //Initialisation d'une date à un temps 0
 var score; //Sera la valeur de timeIni.getTime() à la fin de la partie (le temps qu'aura mis le joueur en millisecondes pour sortir du labyrinthe)
 
 var lastCase = [0,0]; //sauvegarde de la dernière case où se trouvait le personnage avant déplacement 
@@ -191,7 +191,7 @@ function changePos(evt) {
 	}
 	
 	else if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "exit") {
-		score += timeIni.getTime();
+		score += (new Date()).getTime() - timeIni;
 		alert("Vous avez gagné ! Votre score est de : "+score);
 		
 		//Reset de la sauvegarde
