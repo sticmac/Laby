@@ -179,6 +179,8 @@ function changePos(evt) {
 			}
 			break;
 	}
+	lastRoom[0] = character.room[0];
+	lastRoom[1] = character.room[1];
 	lastCase[0] = character.roomCase[0];
 	lastCase[1] = character.roomCase[1];
 	document.getElementById(lastCase[0]+','+lastCase[1]).classList.add("char");
