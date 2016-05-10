@@ -37,7 +37,6 @@ function getMapPHP() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4) { //lorsque la requête est prête
 			if (xhr.status == 200) {
-				console.log(xhr.responseText);
 				var json = JSON.parse(xhr.responseText);
 				map = json.cases;
 				score = json.score;
@@ -187,6 +186,7 @@ function changePos(evt) {
 	if (document.getElementById(lastCase[0]+','+lastCase[1]).classList[0] == "key") {
 		document.getElementById(lastCase[0]+','+lastCase[1]).classList.remove("key", "char");
 		document.getElementById(lastCase[0]+','+lastCase[1]).classList.add("ground", "char");
+		map[lastRoom[0]][lastRoom[1]][lastCase[0]][lastCase[1]] = "ground";
 		addKeys(1);
 	}
 	
@@ -251,6 +251,7 @@ function passThroughDoor(x, y) {
 	else {
 		addKeys(-1);
 		document.getElementById(x+','+y).className = "ground";
+		map[lastRoom[0]][lastRoom[1]][x][y] = "ground";
 		return true;
 	}
 }
