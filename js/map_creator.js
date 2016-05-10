@@ -104,7 +104,7 @@ function sendMap() {
 function addMap() {
 	x = document.getElementsByName("coorX")[0].value;
 	y = document.getElementsByName("coorY")[0].value;
-	if (parseInt(x) == x && parseInt(y) == y && Math.abs(x) <= 50 && Math.abs(y) <= 50) {
+	if (parseInt(x) == x && parseInt(y) == y && x <= 50 && x >= 0 && y <= 50 && y >= 0) {
 		document.getElementById("boutons").innerHTML += "<td> <input type=\"button\" value=\""+x+","+y+"\" onclick=\"changeMap("+x+","+y+");\" /> </td>";
 	}
 }
